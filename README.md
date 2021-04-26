@@ -2,23 +2,22 @@ Forked from Fastify
 
 # Benchmarks
 
-* __Machine:__ linux x64 | 2 CPUs 
+* __Machine:__ I7-6820HQ 2.7Ghz 4c/8t | docker linux x64 | 2 vCPU | 4GB RAM
 * __Node:__ `node:14`
 * __Method:__ `autocannon -c 100 -d 40 -p 10 localhost:3000` (two rounds; one to warm-up, one to measure)
 
 |                          | Version | Router | Requests/s | Latency | Throughput/Mb |
 | :--                      | --:     | --:    | :-:        | --:     | --:           |
-| fastify                  | 3.14.1  | ✓      | 82750.4    | 11.58   | 15.4          |
-| @nestjs/fastify          | 7.6.15  | ✓      | 69679.2    | 13.86   | 13.03         |
-| @typeix/router           | 7.1.10  | ✓      | 61805.2    | 15.68   | 8.65          |
-| @typeix/resty            | 7.1.10  | ✓      | 52518.2    | 18.54   | 7.54          |
-| express                  | 4.17.1  | ✓      | 17543.5    | 56.47   | 3.2           |
-| @nestjs/express          | 7.6.15  | ✓      | 14775.2    | 67.13   | 3.72          |
+| fastify                  | ^3.0.0  | ✓      | 42312      | 23.21   | 7.91          |
+| @nestjs/platform-fastify | ^7.6.15 | ✓      | 37491      | 26.19   | 7.00          |
+| @typeix/router           | ^7.4.0  | ✓      | 35417.4    | 27.74   | 5.10          |
+| @typeix/resty            | ^7.4.0  | ✓      | 29979.6    | 32.86   | 4.20          |
+| express                  | ^4.16.4 | ✓      | 10391.8    | 95.65   | 1.95          |
+| @nestjs/platform-express | ^7.6.15 | ✓      | 8116.15    | 122.56  | 2             |
 
-# K8s 
+
+# Test Run
 ```shell
 docker build . -t typeix/benchmarks
-docker run -it --cpus=2 typeix/benchmarks /bin/bash
-kubectl create -f local-pod.yml
-kubectl delete -f local-pod.yml
+docker run --cpus=4 --volume=$(pwd)/results:/usr/src/app/results typeix/benchmarks
 ```

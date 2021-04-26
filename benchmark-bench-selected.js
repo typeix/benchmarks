@@ -9,13 +9,7 @@ const packages = {
     'nestjs-fastify.js': { checked: true, hasRouter: true, package: '@nestjs/platform-fastify' },
     'nestjs-express.js': { checked: true, hasRouter: true, package: '@nestjs/platform-express' },
     'typeix-resty.js': { checked: true,  hasRouter: true, package: '@typeix/resty' },
-    'typeix-router.js': { checked: true, hasRouter: true, package: '@typeix/router' },
-    'express-route-prefix': { extra: true, package: 'express', hasRouter: true },
-    'express-with-middlewares': {
-        extra: true,
-        package: 'express',
-        hasRouter: true
-    }
+    'typeix-router.js': { checked: true, hasRouter: true, package: '@typeix/router' }
 }
 const choices = [];
 Object.keys(packages).forEach(pkg => {
