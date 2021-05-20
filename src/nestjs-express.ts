@@ -3,20 +3,22 @@ import {NestFactory} from "@nestjs/core";
 
 @Controller("/")
 class HelloWorldController {
-    @Get()
-    helloWorld(): any {
-        return {hello: "world"};
-    }
+  @Get()
+  helloWorld(): any {
+    return {hello: "world"};
+  }
 }
 
 @Module({
-   controllers: [HelloWorldController]
+  controllers: [HelloWorldController]
 })
-export class AppModule {}
+export class AppModule {
+}
 
 
 async function bootstrap() {
-    const app = await NestFactory.create(AppModule);
-    await app.listen(3000);
+  const app = await NestFactory.create(AppModule);
+  await app.listen(3000);
 }
+
 bootstrap();

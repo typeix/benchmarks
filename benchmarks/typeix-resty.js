@@ -47,7 +47,10 @@ ApplicationModule = __decorate([
         controllers: [HomeController]
     })
 ], ApplicationModule);
-const server = http_1.createServer();
-resty_1.pipeServer(server, ApplicationModule);
-server.listen(3000);
+async function bootstrap() {
+    const server = http_1.createServer();
+    await resty_1.pipeServer(server, ApplicationModule);
+    server.listen(3000);
+}
+exports.default = bootstrap();
 //# sourceMappingURL=typeix-resty.js.map

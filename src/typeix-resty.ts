@@ -4,37 +4,41 @@ import {createServer} from "http";
 
 // define controller
 @Controller({
-    path: "/"
+  path: "/"
 })
 class HomeController {
 
-    @GET()
-    actionGet() {
-        return {hello: "world"};
-    }
+  @GET()
+  actionGet() {
+    return {hello: "world"};
+  }
 }
 
 // DEFINE MODULE
 @RootModule({
-    imports: [], // here you can import other modules
-    shared_providers: [
-        {
-            provide: Logger,
-            useFactory: () => new Logger({
-                options: {
-                    level: "info"
-                }
-            })
-        },
-        Router
-    ],
-    providers: [],
-    controllers: [HomeController]
+  imports: [], // here you can import other modules
+  shared_providers: [
+    {
+      provide: Logger,
+      useFactory: () => new Logger({
+        options: {
+          level: "info"
+        }
+      })
+    },
+    Router
+  ],
+  providers: [],
+  controllers: [HomeController]
 })
 class ApplicationModule {
 }
 
 // START SERVER
-const server = createServer();
-pipeServer(server, ApplicationModule);
-server.listen(3000);
+async function bootstrap() {
+  const server = createServer();
+  await pipeServer(server, ApplicationModule);
+  server.listen(3000);
+}
+
+export default bootstrap();
