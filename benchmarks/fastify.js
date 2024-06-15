@@ -1,24 +1,29 @@
 'use strict'
 
-const fastify = require('fastify')()
+const cluster = require("./cluster");
 
-const schema = {
-  schema: {
-    response: {
-      200: {
-        type: 'object',
-        properties: {
-          hello: {
-            type: 'string'
+cluster.clusterNode(() => {
+  const fastify = require('fastify')()
+  const schema = {
+    schema: {
+      response: {
+        200: {
+          type: 'object',
+          properties: {
+            hello: {
+              type: 'string'
+            }
           }
         }
       }
     }
-  }
-}
+  };
+  fastify.get('/', schema, function (req, reply) {
+    reply.send({ hello: 'world' })
+  });
+  fastify.listen({
+    port: 3000
+  });
+});
 
-fastify.get('/', schema, function (req, reply) {
-  reply.send({ hello: 'world' })
-})
 
-fastify.listen(3000)

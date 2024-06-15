@@ -12,6 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
+const cluster_1 = require("./cluster");
 let HelloWorldController = class HelloWorldController {
     helloWorld() {
         return { hello: "world" };
@@ -38,5 +39,5 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(AppModule);
     await app.listen(3000);
 }
-bootstrap();
+(0, cluster_1.clusterNode)(bootstrap);
 //# sourceMappingURL=nestjs-express.js.map

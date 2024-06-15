@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const resty_1 = require("@typeix/resty");
 const http_1 = require("http");
+const cluster_1 = require("./cluster");
 let HomeController = class HomeController {
     actionGet() {
         return { hello: "world" };
@@ -52,5 +53,5 @@ async function bootstrap() {
     await (0, resty_1.pipeServer)(server, ApplicationModule);
     server.listen(3000);
 }
-exports.default = bootstrap();
+(0, cluster_1.clusterNode)(bootstrap);
 //# sourceMappingURL=typeix-resty.js.map

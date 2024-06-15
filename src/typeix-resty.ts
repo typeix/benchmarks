@@ -1,5 +1,6 @@
 import {pipeServer, Controller, GET, RootModule, Logger, Router} from "@typeix/resty";
 import {createServer} from "http";
+import {clusterNode} from "./cluster";
 // resty supports http, https, http2
 
 // define controller
@@ -41,4 +42,4 @@ async function bootstrap() {
   server.listen(3000);
 }
 
-export default bootstrap();
+clusterNode(bootstrap);

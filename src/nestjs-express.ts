@@ -1,5 +1,6 @@
 import {Controller, Get, Module} from "@nestjs/common";
 import {NestFactory} from "@nestjs/core";
+import {clusterNode} from "./cluster";
 
 @Controller("/")
 class HelloWorldController {
@@ -21,4 +22,4 @@ async function bootstrap() {
   await app.listen(3000);
 }
 
-bootstrap();
+clusterNode(bootstrap);
