@@ -6,6 +6,6 @@ let router = router_1.Injector.Sync.createAndResolve(router_1.Router, []).get(ro
 router.get("/", (injector, route) => {
     return { hello: "world" };
 });
-let server = router.pipe(http_1.createServer());
+let server = router.pipe((0, http_1.createServer)());
 server.listen(3000);
 //# sourceMappingURL=typeix-router.js.map

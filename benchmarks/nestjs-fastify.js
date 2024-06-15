@@ -19,22 +19,22 @@ let HelloWorldController = class HelloWorldController {
     }
 };
 __decorate([
-    common_1.Get(),
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Object)
 ], HelloWorldController.prototype, "helloWorld", null);
 HelloWorldController = __decorate([
-    common_1.Controller("/")
+    (0, common_1.Controller)("/")
 ], HelloWorldController);
 let AppModule = class AppModule {
 };
-AppModule = __decorate([
-    common_1.Module({
+exports.AppModule = AppModule;
+exports.AppModule = AppModule = __decorate([
+    (0, common_1.Module)({
         controllers: [HelloWorldController]
     })
 ], AppModule);
-exports.AppModule = AppModule;
 async function bootstrap() {
     const app = await core_1.NestFactory.create(AppModule, new platform_fastify_1.FastifyAdapter());
     await app.listen(3000);

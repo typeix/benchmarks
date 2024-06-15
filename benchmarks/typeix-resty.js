@@ -17,20 +17,20 @@ let HomeController = class HomeController {
     }
 };
 __decorate([
-    resty_1.GET(),
+    (0, resty_1.GET)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
 ], HomeController.prototype, "actionGet", null);
 HomeController = __decorate([
-    resty_1.Controller({
+    (0, resty_1.Controller)({
         path: "/"
     })
 ], HomeController);
 let ApplicationModule = class ApplicationModule {
 };
 ApplicationModule = __decorate([
-    resty_1.RootModule({
+    (0, resty_1.RootModule)({
         imports: [],
         shared_providers: [
             {
@@ -48,8 +48,8 @@ ApplicationModule = __decorate([
     })
 ], ApplicationModule);
 async function bootstrap() {
-    const server = http_1.createServer();
-    await resty_1.pipeServer(server, ApplicationModule);
+    const server = (0, http_1.createServer)();
+    await (0, resty_1.pipeServer)(server, ApplicationModule);
     server.listen(3000);
 }
 exports.default = bootstrap();
